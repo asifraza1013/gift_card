@@ -16,11 +16,6 @@ class UserController extends Controller
 {
     public function __construct()
     {
-
-        $this->middleware('permission:view-user')->except(['profile', 'profileUpdate']);
-        $this->middleware('permission:create-user', ['only' => ['create','store']]);
-        $this->middleware('permission:update-user', ['only' => ['edit','update']]);
-        $this->middleware('permission:destroy-user', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -32,10 +27,8 @@ class UserController extends Controller
 
         if ($request->has('search')) {
             $users = User::where('name', 'like', '%'.$request->search.'%')->paginate(setting('record_per_page', 15));
-        }else{
-            if($request->has('type') && $request->type == 'admin') $users= User::role(['super-admin', 'admin'])->paginate(setting('record_per_page', 15));
-            else if($request->has('type') && $request->type == 'inspector') $users= User::whereIn('type', [2, 3])->paginate(setting('record_per_page', 15));
-            else $users= User::role('user')->paginate(setting('record_per_page', 15));
+        }{
+            $users= User::paginate(setting('record_per_page', 15));
         }
         $title =  'Manage Users';
         return view('users.index', compact('users','title'));

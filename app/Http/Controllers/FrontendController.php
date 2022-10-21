@@ -8,8 +8,17 @@ class FrontendController extends Controller
 {
     public function index()
     {
+        return redirect(route('register'));
         $title = 'Landing Page';
         return view('frontend.pages.welcome', compact([
+            'title'
+        ]));
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $title = 'Admin Login';
+        return view('auth.login', compact([
             'title'
         ]));
     }

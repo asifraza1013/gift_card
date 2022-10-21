@@ -27,10 +27,11 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 Route::get('/faq', [FrontendController::class, 'faqIndex'])->name('faq');
-Route::get('/contact_us', [FrontendController::class, 'contactusIndex'])->name('contactus');
-Route::get('/get_quotation', [FrontendController::class, 'getQuote'])->name('quotation');
-Route::get('/pricing_plans', [FrontendController::class, 'pricingPlanIndex'])->name('pricingplan');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('', [FrontendController::class, 'adminLogin'])->name('admin.login');
+});
 
 Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->name('user.manual.registrations');
 
@@ -45,50 +46,24 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/profile', [UserController::class, 'profileIndex'])->name('user.profile');
 });
 
-// Auth::routes(['verify'=>false]);
-
-
 Route::group(['middleware' => ['auth','verified']], function () {
-
-    Route::get('/home', 'HomeController@index')->name('home');
-
-    Route::get('/components', function(){
-        return view('components');
-    })->name('components');
-
-
-    Route::resource('users', 'UserController');
-    Route::get('/users/{user?}', 'UserController@profile')->name('users.index');
-
-    Route::get('/profile/{user}', 'UserController@profile')->name('profile.edit');
-
-    Route::post('/profile/{user}', 'UserController@profileUpdate')->name('profile.update');
-
-    Route::resource('roles', 'RoleController')->except('show');
-
-    Route::resource('permissions', 'PermissionController')->except(['show','destroy','update']);
-
-    Route::resource('category', 'CategoryController')->except('show');
-
-    Route::resource('post', 'PostController');
-
-    Route::get('/activity-log', 'SettingController@activity')->name('activity-log.index');
-
-    Route::get('/settings', 'SettingController@index')->name('settings.index');
-
-    Route::post('/settings', 'SettingController@update')->name('settings.update');
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
     });
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+
+    Route::resource('users', 'UserController');
+    Route::get('/users/{user?}', 'UserController@profile')->name('users.index');
+    Route::get('/profile/{user}', 'UserController@profile')->name('profile.edit');
+    Route::post('/profile/{user}', 'UserController@profileUpdate')->name('profile.update');
+
+    Route::get('/settings', 'SettingController@index')->name('settings.index');
+    Route::post('/settings', 'SettingController@update')->name('settings.update');
+
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', 'DashboardController@inspectorDashboard')->name('admin.dashboard');
     });
-    Route::group(['prefix' => 'quote'], function () {
-        Route::get('/options', 'QuoteManagementController@quotationOptions')->name('admin.quote.options');
-    });
-
-    Route::get('media', function (){
-        return view('media.index');
-    })->name('media.index');
 });

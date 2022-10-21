@@ -11,7 +11,7 @@
 
                         <div class="mb-5">
                             <h6 class="h3 mb-1">Welcome back!</h6>
-                            <p class="text-muted mb-0">Login to manage your account.</p>
+                            <p class="text-muted mb-0">Login to get Gift Card.</p>
                         </div>
                         <form class="form-validate" method="POST" action="{{ route('login') }}">
                             @csrf

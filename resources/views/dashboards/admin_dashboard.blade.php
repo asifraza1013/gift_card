@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Completed Quotation</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Total Card Sent</h5>
                             <span class="h2 font-weight-bold mb-0">899</span>
                         </div>
                         <div class="col-auto">
@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Inspection Requests</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">New Users</h5>
                             <span class="h2 font-weight-bold mb-0">7</span>
                         </div>
                         <div class="col-auto">
@@ -52,7 +52,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Total Earned</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
                             <span class="h2 font-weight-bold mb-0">68,454</span>
                         </div>
                         <div class="col-auto">
@@ -98,7 +98,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Recent Quotes</h3>
+                            <h3 class="mb-0">Users</h3>
                         </div>
                         <div class="col text-right">
                             <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -110,19 +110,18 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Select Company</th>
-                                <th scope="col">Square Footage</th>
-                                <th scope="col">Year Built</th>
-                                <th scope="col">Total</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    Test 1
+                                    Asif
                                 </th>
                                 <td>
-                                    4,569
+                                    Raza
                                 </td>
                                 <td>
                                     2.3

@@ -10,23 +10,31 @@
                     <div class="w-100 px-3 px-sm-5 px-xl-7">
 
                         <div class="mb-5">
-                            <h6 class="h3 mb-1">Welcome back!</h6>
-                            <p class="text-muted mb-0">Login to manage your account.</p>
+                            <h6 class="h3 mb-1">Welcome!</h6>
+                            <p class="text-muted mb-0">Please enter required detail to get gift card.</p>
                         </div>
                         <form class="form-validate" action="{{ route('user.manual.registrations') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="email">Email address</label>
+                                <label for="email">First Name</label>
                                 <div class="input-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Enter your email"
+                                    <input type="text" class="form-control" name="first_name" placeholder="Enter First Name"
                                         required="">
                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email">Username</label>
+                                <label for="email">Last Name</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="name" placeholder="Enter your Username"
+                                    <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name"
+                                        required="">
+                                    <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Enter your email"
                                         required="">
                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                 </div>
@@ -40,13 +48,12 @@
                                             style="cursor: pointer;"></i></span>
                                 </div>
                             </div>
-                            <div class="mt-4"><button type="submit" class="btn btn-primary btn-block btn-primary">Sign
-                                    up</button>
+                            <div class="mt-4"><button type="submit" class="btn btn-primary btn-block btn-primary">Get Gift Card</button>
                             </div>
                         </form>
-                        <div class="mt-4 text-center"><small>Already have an acocunt?</small> <a href="{{ route('login') }}"
+                        {{-- <div class="mt-4 text-center"><small>Already have an acocunt?</small> <a href="{{ route('login') }}"
                                 class="small fw-bold">Sign in</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-6 d-none d-md-block bg-cover"

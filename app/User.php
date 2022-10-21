@@ -21,7 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_number', 'profile_photo', 'status', 'type','email_verified_at'
+        'first_name','last_name', 'email', 'password', 'status', 'type','email_verified_at'
     ];
 
     /**
@@ -44,23 +44,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function setStatusAttribute($status)
-    {
-        $this->attributes['status'] = ($status)? 1 : 0;
-    }
     public function setPasswordAttribute($password)
     {
         if(Hash::needsRehash($password)){
             $password = Hash::make($password);
             $this->attributes['password'] = $password;
         }
-    }
-    public function categories()
-    {
-        return $this->hasMany('App\Category');
-    }
-    public function posts()
-    {
-        return $this->hasMany('App\Post');
     }
 }

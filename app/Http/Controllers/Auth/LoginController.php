@@ -42,8 +42,8 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->maxAttempts = Setting::get('max_login_attempts', 3);
-        $this->decayMinutes = Setting::get('lockout_delay', 2);
+        $this->maxAttempts = 3;
+        $this->decayMinutes = 2;
     }
 
 
@@ -59,13 +59,12 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
         if(Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $request->remember)){
-            $userStatus = Auth::User()->status;
-            if($userStatus==1) {
+            $userType = Auth::User()->type;
+            if($userType ==1) {
                 return redirect()->intended(url('/home'));
             }else{
                 Auth::logout();
                 toast('You are temporary blocked. please contact to admin','warning');
-                // flash('You are temporary blocked. please contact to admin')->warning();
                 return redirect()->route('login')->withInput();
             }
         }
