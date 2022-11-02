@@ -36,9 +36,9 @@
                                     in</button>
                             </div>
                         </form>
-                        <div class="mt-4 text-center"><small>Not registered?</small> <a href="{{ route('register') }}"
+                        {{-- <div class="mt-4 text-center"><small>Not registered?</small> <a href="{{ route('register') }}"
                                 class="small fw-bold">Create account</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-6 d-none d-md-block bg-cover"

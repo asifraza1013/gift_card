@@ -1,9 +1,4 @@
 @extends('layouts.app')
-@push('pg_btn')
-@can('create-user')
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-neutral">Create New User</a>
-@endcan
-@endpush
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -31,8 +26,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Verified at</th>
-                                    <th scope="col">Photo</th>
+                                    <th scope="col">create at</th>
                                     <th scope="col" class="text-center">Action</th>
                                 </tr>
                                 </thead>
@@ -40,53 +34,27 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <th scope="row">
-                                            {{$user->name}}
+                                            {{$user->first_name}}  {{$user->last_name}}
                                         </th>
                                         <td class="budget">
                                             {{$user->email}}
                                         </td>
                                         <td>
-                                            @if($user->status)
+                                            @if(!$user->status)
                                                 <span class="badge badge-pill badge-lg badge-success">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-lg badge-danger">Disabled</span>
                                             @endif
                                         </td>
                                         <td>
-                                            {{$user->email_verified_at}}
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                @if ($user->profile_photo)
-                                                <img alt="Image placeholder"
-                                                    class="avatar avatar-sm rounded-circle"
-                                                    data-toggle="tooltip" data-original-title="{{$user->name}}"
-                                                    src="{{ asset($user->profile_photo) }}">
-                                                @else
-                                                <i class="far avatar avatar-sm rounded-circle fa-user"></i>
-                                                @endif
-                                            </div>
+                                            {{$user->created_at}}
                                         </td>
                                         <td class="text-center">
-                                            @can('destroy-user')
                                             {!! Form::open(['route' => ['users.destroy', $user],'method' => 'delete',  'class'=>'d-inline-block dform']) !!}
-                                            @endcan
-                                            @can('view-user')
-                                            <a class="btn btn-primary btn-sm m-1" data-toggle="tooltip" data-placement="top" title="View and edit user details" href="{{route('users.show', $user)}}">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                            </a>
-                                            @endcan
-                                            @can('update-user')
-                                            <a class="btn btn-info btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Edit user details" href="{{route('users.edit',$user)}}">
-                                                <i class="fa fa-edit" aria-hidden="true"></i>
-                                            </a>
-                                            @endcan
-                                            @can('destroy-user')
                                                 <button type="submit" class="btn delete btn-danger btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Delete user" href="">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             {!! Form::close() !!}
-                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
