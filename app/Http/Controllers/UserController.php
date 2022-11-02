@@ -28,7 +28,7 @@ class UserController extends Controller
         if ($request->has('search')) {
             $users = User::where('name', 'like', '%'.$request->search.'%')->paginate(setting('record_per_page', 15));
         }{
-            $users= User::paginate(setting('record_per_page', 15));
+            $users= User::where('type', "!=", 1)->paginate(setting('record_per_page', 15));
         }
         $title =  'Manage Users';
         return view('users.index', compact('users','title'));
