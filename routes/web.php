@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->name('user.manual.registrations');
+Route::get('/export', [HomeController::class, 'exportAllUsers'])->name('user.export');
 
 
 /*

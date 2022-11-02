@@ -39,7 +39,7 @@
                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                 </div>
                             </div>
-                            <div class="form-group ">
+                            {{-- <div class="form-group ">
                                 <label for="password">Password</label>
                                 <div class="input-group show-hide-password">
                                     <input class="form-control" name="password" placeholder="Enter password" type="password"
@@ -47,7 +47,7 @@
                                     <span class="input-group-text"><i class="icon-eye-off" aria-hidden="true"
                                             style="cursor: pointer;"></i></span>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="mt-4"><button type="submit" class="btn btn-primary btn-block btn-primary">Get Gift Card</button>
                             </div>
                         </form>

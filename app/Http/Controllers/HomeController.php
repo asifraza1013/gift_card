@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
+use App\Notifications\GiftCardNotification;
+use Illuminate\Support\Facades\Notification;
 
 class HomeController extends Controller
 {
@@ -45,7 +46,7 @@ class HomeController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string'],
+            // 'password' => ['required', 'string'],
         ]);
 
         // dd($validator->errors()->getMessages());
@@ -61,7 +62,7 @@ class HomeController extends Controller
             [
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
-                'password' => $data['email'],
+                'password' => 'Password@1',
                 'email_verified_at' => Carbon::now()->toDateTimeString(),
             ],
         );
@@ -79,7 +80,19 @@ class HomeController extends Controller
         // if ( setting('default_role')) {
         //     $user->assignRole(setting('default_role'));
         // }
+        Log::info('sendingEmail '.$user->email);
+        Notification::route('mail', $user->email)
+                ->notify(new GiftCardNotification($user));
         toast('Gift Card already sent to your given email. Thank you for using our service', 'success');
         return redirect(route('register'));
+    }
+
+    public function exportAllUsers(Request $request)
+    {
+        $title = 'All Users List';
+        $users = User::where('type', 2)->get();
+        $pdf = PDF::loadView('export.gift_card', $users);
+
+        return $pdf->download('allUsersList.pdf');
     }
 }
