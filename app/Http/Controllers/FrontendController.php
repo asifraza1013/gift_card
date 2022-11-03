@@ -8,7 +8,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        // return redirect(route('register'));
+        return redirect(route('register'));
         $title = 'Landing Page';
         return view('emails.gift_card', compact([
             'title'

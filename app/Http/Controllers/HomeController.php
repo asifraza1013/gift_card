@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\GiftCardNotification;
+use DateTime;
 use Illuminate\Support\Facades\Notification;
 
 class HomeController extends Controller
@@ -55,7 +56,17 @@ class HomeController extends Controller
             toast('Please try with correct data Thanks!', 'error');
             return redirect()->back();
         }
-
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            // dd(Carbon::now()->toDateTimeString());
+            $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $user->updated_at);
+            $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', Carbon::now()->toDateTimeString());
+            $diff_in_days = $to->diffInDays($from);
+            if($diff_in_days < 1){
+                toast('Opps! you have already got today gift card. Please try again next day. thank you.', 'error');
+                return redirect(route('register'));
+            }
+        }
         $data = $request->all();
         $user = User::updateOrCreate(
             ['email' => $data['email']],
@@ -90,8 +101,8 @@ class HomeController extends Controller
     public function exportAllUsers(Request $request)
     {
         $title = 'All Users List';
-        $users = User::where('type', 2)->get();
-        $pdf = PDF::loadView('export.gift_card', $users);
+        $users = User::where('type', 2)->get()->toArray();
+        $pdf = PDF::loadView('export.gift_card', compact(['users']));
 
         return $pdf->download('allUsersList.pdf');
     }

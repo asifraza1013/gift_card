@@ -872,7 +872,7 @@ address {
             <div class="block mt-4 m-75 m-auto d-block">
                 <table class="table table-bordered">
                     <thead>
-                        <tr class="main-color">
+                        <tr class="">
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>email</th>
@@ -882,10 +882,10 @@ address {
                     <tbody>
                         @foreach ($users as $data)
                         <tr>
-                            <td>{{$data->first_name}}</td>
-                            <td>{{$data->last_name}}</td>
-                            <td>{{$data->email}}</td>
-                            <td>{{$data->created_at}}</td>
+                            <td>{{$data['first_name']}}</td>
+                            <td>{{$data['last_name']}}</td>
+                            <td>{{$data['email']}}</td>
+                            <td>{{$data['created_at']}}</td>
                         </tr>
                         @endforeach
                     </tbody>

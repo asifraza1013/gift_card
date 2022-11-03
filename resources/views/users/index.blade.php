@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    <a href="{{ route('user.export') }}" class="btn btn-sm btn-neutral m-3">Export User</a>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-5">
