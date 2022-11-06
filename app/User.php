@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, HasRoles, LogsActivity, ThrottlesLogins;
+    use Notifiable, LogsActivity, ThrottlesLogins;
     protected static $ignoreChangedAttributes = ['password'];
 
     /**
