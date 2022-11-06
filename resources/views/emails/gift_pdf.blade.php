@@ -1372,29 +1372,10 @@
     <div class="" style="padding: 20px">
         <div class="row">
             <div class="col-8 offset-2">
-                {{-- <img src="{{ asset('frontend/assets/images/email_pdf.png') }}" alt="" class="w-75" style="width: 100%"> --}}
-                <img src="https://famee.bitwork.tech/public/backgrounds/1667582606.png" alt="" class="" style="width:100%">
+                <img src="{{ asset('frontend/assets/images/email_pdf.png') }}" alt="" class="w-75" style="width: 100%">
             </div>
             <div class="offset-2">
             </div>
-            {{-- <div class="col-2" style="flex: 0 0 16.66667%; max-width: 16.66667%; position: relative; width: 100%; padding-right: 15px; padding-left: 15px;">
-                <div class="card-side main-color">
-                    <h1 class="font-weight-bold">10%</h1>
-                    <h2 class="font-weight-bold">RABATT</h2>
-                </div>
-                <div class="card-side main-color">
-                    <h1 class="font-weight-bold">10%</h1>
-                    <h2 class="font-weight-bold">RABATT</h2>
-                </div>
-                <div class="card-side main-color">
-                    <h1 class="font-weight-bold">10%</h1>
-                    <h2 class="font-weight-bold">RABATT</h2>
-                </div>
-                <div class="card-side main-color">
-                    <h1 class="font-weight-bold">10%</h1>
-                    <h2 class="font-weight-bold">RABATT</h2>
-                </div>
-            </div> --}}
             <div class="col-12">
                 <div class="block">
                     <h3>10% EXTRA-RABATT FÜR SIE!</h3>
@@ -1406,7 +1387,7 @@
                     <p>Present this Day Discount Card and get additional 10% off for your
                         purchase in 5 Shops of your choice at the City Outlet Bad Münstereif</p>
                 </div>
-                <div class="block m-75 m-auto d-block" style="margin-top: 80px">
+                <div class="block m-75 m-auto d-block" style="margin-top: 10px">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
