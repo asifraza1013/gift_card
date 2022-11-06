@@ -868,6 +868,7 @@ address {
 </head>
 <body style="">
     <div class="container" style="padding: 20px">
+       <div class="" style="background-color: white; padding:10px">
         <div class="row">
             <div class="col-2">
                 <div class="card-side main-color" >
@@ -890,8 +891,7 @@ address {
             <div class="col-10">
                 <div class="block">
                     <h3>10% EXTRA-RABATT FÜR SIE!</h3>
-                    <p>Gegen Vorlage dieser Day Discount Card, erhalten Sie 10% Extra-RE
-                        auf Ihre Einkäufe in 5 Shops Ihrer Wahl im City Outlet Bad Münstereif</p>
+                    <p>Gegen Vorlage dieser Day Discount Card, erhalten Sie 10% Extra-Rabatt auf Ihre Einkäufe in 5 Shops Ihrer Wahl im City Outlet Bad Münstereifel.</p>
                 </div>
 
                 <div class="block mt-4">
@@ -943,6 +943,7 @@ address {
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 </html>

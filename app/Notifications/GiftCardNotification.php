@@ -43,6 +43,7 @@ class GiftCardNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Gift Card')
+            ->attachData($this->data->pdf->output(), "gift_card_".$this->data->first_name.".pdf")
             ->view('emails.gift_card', ['data' => $this->data]);
     }
 
