@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Total Card Sent</h5>
-                            <span class="h2 font-weight-bold mb-0">899</span>
+                            <span class="h2 font-weight-bold mb-0">{{ $totalUser }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -30,8 +30,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">New Users</h5>
-                            <span class="h2 font-weight-bold mb-0">7</span>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Last Month User</h5>
+                            <span class="h2 font-weight-bold mb-0">{{ $lastMonthCount }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
-                            <span class="h2 font-weight-bold mb-0">68,454</span>
+                            <span class="h2 font-weight-bold mb-0">{{ $totalUser }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
-                            <span class="h2 font-weight-bold mb-0">400</span>
+                            <span class="h2 font-weight-bold mb-0">{{ $totalUser }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -116,62 +116,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    Asif
-                                </th>
-                                <td>
-                                    Raza
-                                </td>
-                                <td>
-                                    2.3
-                                </td>
-                                <td>
-                                    1,331
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Test 2
-                                </th>
-                                <td>
-                                    1,522
-                                </td>
-                                <td>
-                                    1.64
-                                </td>
-                                <td>
-                                    1,121
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Test 3
-                                </th>
-                                <td>
-                                    2,122
-                                </td>
-                                <td>
-                                    1.99
-                                </td>
-                                <td>
-                                    2,432
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Test 4
-                                </th>
-                                <td>
-                                    983
-                                </td>
-                                <td>
-                                    200 Days
-                                </td>
-                                <td>
-                                    1,510
-                                </td>
-                            </tr>
+                            @foreach ($lastestUsers as $user)
+                                <tr>
+                                    <td>{{ $user->first_name }}</td>
+                                    <td>{{ $user->last_name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

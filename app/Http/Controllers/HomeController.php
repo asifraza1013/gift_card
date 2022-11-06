@@ -62,10 +62,10 @@ class HomeController extends Controller
             $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $user->updated_at);
             $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', Carbon::now()->toDateTimeString());
             $diff_in_days = $to->diffInDays($from);
-            // if($diff_in_days < 1){
-            //     toast('Opps! you have already got today gift card. Please try again next day. thank you.', 'error');
-            //     return redirect(route('register'));
-            // }
+            if($diff_in_days < 1){
+                toast('Opps! you have already got today gift card. Please try again next day. thank you.', 'error');
+                return redirect(route('register'));
+            }
         }
         $data = $request->all();
         $user = User::updateOrCreate(
